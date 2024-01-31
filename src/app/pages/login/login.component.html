@@ -1,0 +1,55 @@
+<div class="main">
+    <div>
+      <div class="form">
+        <div class="card-icon">
+          <mat-icon color="primary" class="main-card-icon" matSuffix>account_circle</mat-icon>
+        </div>
+        <mat-form-field [floatLabel]="'always'" color="primary" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            class="input"
+            type="email"
+            [(ngModel)]="user.email"
+            matInput
+            
+            required
+            ngModel
+            email="true"
+          />
+          <mat-icon color="primary" matSuffix>email</mat-icon>
+        </mat-form-field>
+  
+        <mat-form-field color="primary" [floatLabel]="'always'" [ariaDisabled]="primary" appearance="outline">
+          <mat-label color="primary">Password</mat-label>
+          <input
+            class="input"
+            type="password"
+            [(ngModel)]="user.password"
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            
+            required
+          />
+          <button color="primary" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <!-- <mat-icon matSuffix>password</mat-icon> -->
+        </mat-form-field>
+  
+        <button
+          color="primary"
+          (click)="login(user.email, user.password)"
+          mat-raised-button
+          class="btn"
+        >
+          Login
+        </button>
+  
+        <p>
+          Don't have a registration?
+          <span (click)="toRegister()">Click here</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  
