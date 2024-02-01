@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,13 +19,15 @@ $pallworld-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$pallworld-theme: mat.define-light-theme((
-  color: (
-    primary: $pallworld-primary,
-    accent: $pallworld-accent,
-    warn: $pallworld-warn,
+$pallworld-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $pallworld-primary,
+      accent: $pallworld-accent,
+      warn: $pallworld-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -35,23 +36,25 @@ $pallworld-theme: mat.define-light-theme((
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-
 :root {
   --primary: #495057;
   --background: #212529;
 }
 :root .light-theme {
   --primary: #495057;
-  --background: #E9ECEF;
+  --background: #e9ecef;
 }
 
 body {
   margin: 0;
   background-color: var(--background);
 }
-p, h1 {
+p,
+h1 {
   color: var(--primary);
 }
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
