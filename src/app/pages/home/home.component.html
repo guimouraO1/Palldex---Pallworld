@@ -1,1 +1,33 @@
-<p>home works!</p>
+<div class="main">
+  <div class="pall-list">
+    @for (pall of Palls; track $index) {
+    <div class="pall-card">
+      <div class="pall-image">
+        <img
+          src="https://raw.githubusercontent.com/mlg404/palworld-paldex-api/main/public/images/paldeck/{{
+            pall.id
+          }}.png"
+        />
+      </div>
+      <div class="pall-content">
+        <div class="pall-content-name">
+          <h2>{{ pall.name }}</h2>
+        </div>
+        <div class="pall-contents">
+          <h3>
+            Elements: @for (element of pall.elements; track $index) {
+            <span class="elements">{{ element }}</span>
+            }
+          </h3>
+          <h3>
+            Partner Skill: <span>{{ pall.partnerSkill }}</span>
+          </h3>
+          <h3>
+            Abilities: <span> {{ pall.abilities }}</span>
+          </h3>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
