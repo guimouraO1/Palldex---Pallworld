@@ -16,7 +16,9 @@ export class NavComponent {
   home() {
     this._router.navigate(['home']);
   }
-
+  palldex() {
+    this._router.navigate(['palldex']);
+  }
   logout() {
     localStorage.clear()
     this._router.navigate(['login']);

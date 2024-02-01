@@ -1,9 +1,8 @@
 <div class="main">
-  <div class="search">
-    
-  </div>
+  <div class="search"></div>
+
   <div class="pall-list">
-    @for (pall of Palls; track $index) {
+    @for (pall of currentPageData; track $index;) {
     <div class="pall-card">
       <div class="pall-image">
         <img
@@ -18,7 +17,7 @@
         </div>
         <div class="pall-contents">
           <h3>
-            Elements: @for (element of pall.elements; track $index) {
+            Elements: @for (element of pall.elements; track $index;) {
             <span class="elements">{{ element }}</span>
             }
           </h3>
@@ -31,11 +30,30 @@
         </div>
       </div>
       <div class="add-icon">
-        <mat-icon matTooltipPosition="right" matTooltip="Add to your palldex"
+        @if(!isPallInMyPalls(pall.id)){
+        <mat-icon
+          (click)="addToPalldex(pall.id)"
+          matTooltipPosition="left"
+          matTooltip="Add to your palldex"
           >add</mat-icon
         >
+
+        } @else {
+        <mat-icon
+          matTooltipPosition="left"
+          matTooltip="You have allready pall in your palldex"
+          >check</mat-icon
+        >}
       </div>
     </div>
+    } @empty {
+    <mat-spinner></mat-spinner>
     }
+    <mat-paginator
+      [color]="'primary'"
+      [length]="Palls.length"
+      [pageSize]="pageSize"
+      (page)="onPageChange($event)"
+    ></mat-paginator>
   </div>
 </div>

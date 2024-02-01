@@ -1,0 +1,17 @@
+<div class="main">
+  <h1>My Palldex</h1>
+  <div class="pall-list">
+    @for (pall of myPalls; track $index;) {
+    <div class="pall-card">
+      <mat-icon>delete_outline</mat-icon>
+      <div class="pall-image">
+        <img
+          src="https://raw.githubusercontent.com/mlg404/palworld-paldex-api/main/public/images/paldeck/{{
+            pall.id
+          }}.png"
+        />
+      </div>
+    </div>
+    } @empty { }
+  </div>
+</div>

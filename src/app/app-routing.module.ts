@@ -33,6 +33,14 @@ const routes: Routes = [
             (p) => p.HomeComponent
           ),
       },
+      {
+        path: 'palldex',
+        title: 'Pallword | Palldex',
+        loadComponent: () =>
+          import('./pages/palldex/palldex.component').then(
+            (p) => p.PalldexComponent
+          ),
+      },
     ],
   },
 

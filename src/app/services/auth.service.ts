@@ -60,8 +60,8 @@ export class AuthService {
         this.http.get(`${this.urlApi}/user/auth`, { headers }).pipe(take(1))
       );
 
-      this._isAuthenticated = res.loggedIn;
-      return res.loggedIn;
+      this._isAuthenticated = true;
+      return true;
     } catch (e) {
       this._isAuthenticated = false;
       return false;
