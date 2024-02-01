@@ -1,4 +1,7 @@
 <div class="main">
+  <div class="search">
+    
+  </div>
   <div class="pall-list">
     @for (pall of Palls; track $index) {
     <div class="pall-card">
@@ -26,6 +29,11 @@
             Abilities: <span> {{ pall.abilities }}</span>
           </h3>
         </div>
+      </div>
+      <div class="add-icon">
+        <mat-icon matTooltipPosition="right" matTooltip="Add to your palldex"
+          >add</mat-icon
+        >
       </div>
     </div>
     }
