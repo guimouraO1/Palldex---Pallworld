@@ -1,11 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
-import { alwaysAllowAuthGuard } from './_guard/auth.guard';
+import { alwaysAllowAuthGuard, authGuard } from './_guard/auth.guard';
 import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {
     path: '',
-    // canActivate: [alwaysAllowAuthGuard],
+    canActivate: [alwaysAllowAuthGuard],
     children: [
       {
         path: '',
@@ -21,6 +21,21 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: '',
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'home',
+        title: 'Pallword | Home',
+        loadComponent: () =>
+          import('./pages/home/home.component').then(
+            (p) => p.HomeComponent
+          ),
+      },
+    ],
+  },
+
 ];
 
 @NgModule({

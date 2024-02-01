@@ -24,7 +24,7 @@ export class AuthService {
         next: (res: any) => {
           this._isAuthenticated = true;
           localStorage.setItem('token', res.authToken);
-          this.router.navigate(['/publications']);
+          this.router.navigate(['/home']);
         },
         error: (e: any) => {
         },

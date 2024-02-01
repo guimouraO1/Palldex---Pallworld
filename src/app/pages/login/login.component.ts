@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
 primary: string|null|undefined;
 
   async ngOnInit() {
-    // let result = await this.authService.asycUserAuthentication();
+    let result = await this.authService.asycUserAuthentication();
 
-    // if (result) {
-    //   this.router.navigate(['/publications']);
-    // }
+    if (result) {
+      this.router.navigate(['/home']);
+    }
   }
 
   constructor(
@@ -39,6 +39,13 @@ primary: string|null|undefined;
     public dialog: MatDialog,
     private authService: AuthService
   ) {}
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.login(this.user.email, this.user.password);
+    }
+  }
 
   login(email: string, password: string) {
     this.authService.login(email, password);

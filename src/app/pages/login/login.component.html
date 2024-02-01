@@ -11,7 +11,6 @@
             type="email"
             [(ngModel)]="user.email"
             matInput
-            
             required
             ngModel
             email="true"
@@ -19,7 +18,7 @@
           <mat-icon color="primary" matSuffix>email</mat-icon>
         </mat-form-field>
   
-        <mat-form-field color="primary" [floatLabel]="'always'" [ariaDisabled]="primary" appearance="outline">
+        <mat-form-field color="primary" [floatLabel]="'always'" appearance="outline">
           <mat-label color="primary">Password</mat-label>
           <input
             class="input"
@@ -27,7 +26,6 @@
             [(ngModel)]="user.password"
             matInput
             [type]="hide ? 'password' : 'text'"
-            
             required
           />
           <button color="primary" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
