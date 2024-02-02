@@ -3,7 +3,7 @@
   <div class="pall-list">
     @for (pall of myPalls; track $index;) {
     <div class="pall-card">
-      <mat-icon>delete_outline</mat-icon>
+      <mat-icon (click)="deletePall(pall.id)">delete_outline</mat-icon>
       <div class="pall-image">
         <img
           src="https://raw.githubusercontent.com/mlg404/palworld-paldex-api/main/public/images/paldeck/{{

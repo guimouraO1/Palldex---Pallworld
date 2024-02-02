@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PallService } from '../../services/pall.service';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-palldex',
@@ -11,8 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class PalldexComponent implements OnInit{
   myPalls: any;
+  private urlApi = `${environment.urlApi}`;
 
-  constructor(private _pallService: PallService){}
+  constructor(private _pallService: PallService, private http: HttpClient){}
 
   ngOnInit(): void {
     this.getPalls();
@@ -28,4 +31,22 @@ export class PalldexComponent implements OnInit{
       },
     });
   }
+
+  deletePall(pallId: string) {
+
+    console.log(pallId);
+    const authToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('authorization', `${authToken}`);
+  
+    this.http.delete(`${this.urlApi}/user/palls`, { headers, body: { pallId } })
+      .subscribe({
+        next: (res: any) => {
+          this.ngOnInit();
+        },
+        error: (e: any) => {
+          // Trate os erros conforme necessário
+        },
+      });
+  }
+  
 }

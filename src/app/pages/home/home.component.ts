@@ -6,6 +6,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { PallService } from '../../services/pall.service';
+import { take } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -21,8 +24,9 @@ import { PallService } from '../../services/pall.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
+  private urlApi = `${environment.urlApi}`;
   myPalls: any;
-  constructor(private _pallService: PallService) {}
+  constructor(private _pallService: PallService, private http: HttpClient) {}
   
   @ViewChild(MatPaginatorModule)
   paginator!: MatPaginator;
@@ -65,9 +69,19 @@ export class HomeComponent implements OnInit {
   }
 
 
-  addToPalldex(id: string){
-
+  addToPalldex(pallId: string){
+    const authToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('authorization', `${authToken}`);
     
+      this.http.post(`${this.urlApi}/user/palls`, { pallId }, { headers })
+        .subscribe({
+          next: (res: any) => {
+            this.ngOnInit();
+          },
+          error: (e: any) => {
+          },
+        });
+    }
 
-  }
+  
 }
