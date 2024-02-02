@@ -4,20 +4,28 @@
       <mat-form-field appearance="outline">
         <mat-label>Search Pall by Name</mat-label>
         <input matInput [(ngModel)]="searchTerm" />
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-icon matSuffix>search</mat-icon>
         <!-- <mat-hint>Hint</mat-hint> -->
       </mat-form-field>
 
       <mat-form-field color="primary" appearance="outline" multiple>
-        <mat-label>Select an option</mat-label>
+        <mat-label>Select Pall by Element</mat-label>
         <mat-select [(ngModel)]="searchElements" multiple>
           @for (element of elementOptions; track element) {
-          <mat-option [value]="element">{{ element }}</mat-option>
+          <mat-option [value]="element"
+            >{{ element }}
+            <img
+              with="30" height="30" 
+              class="img-element"
+              src="https://raw.githubusercontent.com/mlg404/palworld-paldex-api/main/public/images/elements/{{
+                element.toLowerCase()
+              }}.png"
+              alt=""
+            />
+          </mat-option>
           }
         </mat-select>
       </mat-form-field>
-      
-
 
       <button (click)="searchBy()" mat-stroked-button color="primary">
         SEARCH
@@ -43,7 +51,14 @@
           <div class="pall-contents">
             <h3>
               Elements: @for (element of pall.elements; track $index;) {
-              <span class="elements">{{ element }}</span>
+              <span class="elements">{{ element }}<img
+                with="20" height="20" 
+                class="img-element"
+                src="https://raw.githubusercontent.com/mlg404/palworld-paldex-api/main/public/images/elements/{{
+                  element.toLowerCase()
+                }}.png"
+                alt=""
+              /></span>
               }
             </h3>
             <h3>
@@ -55,6 +70,7 @@
           </div>
         </div>
         <div class="add-icon">
+          
           @if(!isPallInMyPalls(pall.id)){
           <mat-icon
             (click)="addToPalldex(pall.id)"

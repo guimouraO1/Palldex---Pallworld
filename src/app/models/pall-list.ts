@@ -482,7 +482,7 @@ export const Palls = [
   {
     id: '064',
     name: 'Dinossom (Lux)',
-    elements: ['Grass', 'Dragon', 'Electric', 'Dragon'],
+    elements: ['Grass', 'Dragon', 'Electric'],
     partnerSkill: 'Fragrant Dragon (Thunder Dragon)',
     abilities:
       'You can ride this Pal with Ride. You can also swing its tail to inflict damage.',
@@ -529,7 +529,7 @@ export const Palls = [
   {
     id: '071',
     name: 'Vanwyrm (Cryst)',
-    elements: ['Fire', 'Dark', 'Ice', 'Dark'],
+    elements: ['Fire', 'Dark', 'Ice'],
     partnerSkill: 'Aerial Marauder',
     abilities:
       'One of the flying mounts, while also providing Bones, Rubys and Gold Coins as possible drops. It also has a Cryst version which is Ice and Dark-type.',
@@ -615,15 +615,15 @@ export const Palls = [
   {
     id: '084',
     name: 'Blazehowl (Noct)',
-    elements: ['Fire', 'Fire/Dark'],
+    elements: ['Fire', 'Dark'],
     partnerSkill: 'Hellflame Lion (Darkflame Lion)',
     abilities:
       'Can be ridden. While fighting together, Neutral Pals drop more items when defeated.',
   },
   {
-    id: '085',
+    id: '085B',
     name: 'Relaxaurus (Lux)',
-    elements: ['Dragon/Water', 'Dragon/Electric'],
+    elements: ['Dragon', 'Electric'],
     partnerSkill: 'Hungry Missile (Missile Party)',
     abilities:
       'You can ride this dragon, and make it a living missile shooting turret.',
