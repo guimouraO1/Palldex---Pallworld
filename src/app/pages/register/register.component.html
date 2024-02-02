@@ -1,71 +1,70 @@
 <div class="main">
-    <div>
-      <div class="form">
-        <div class="card-icon">
-          <mat-icon class="main-card-icon" matSuffix>account_circle</mat-icon>
-        </div>
-        <form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="form2">
-          <mat-form-field appearance="outline">
-            <mat-label>{{ getErrorMessage("email") || "Email" }}</mat-label>
-            <input type="email" formControlName="email" matInput required />
-            <mat-icon matSuffix>email</mat-icon>
-          </mat-form-field>
-  
-          <mat-form-field appearance="outline">
-            <mat-label>{{ getErrorMessage("password") || "Password" }}</mat-label>
-            <input
-              type="password"
-              formControlName="password"
-              placeholder="Password"
-              matInput
-              [type]="hideConfirmPassword ? 'password' : 'text'"
-              required
-            />
-            <button
-              mat-icon-button
-              matSuffix
-              (click)="hideConfirmPassword = !hideConfirmPassword"
-              [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hideConfirmPassword"
-              type="button"
-            >
-              <mat-icon>{{ hideConfirmPassword ? "visibility_off" : "visibility" }}</mat-icon>
-            </button>
-          </mat-form-field>
-  
-          <mat-form-field appearance="outline">
-            <mat-label>{{
-              getErrorMessage("confirmPassword") || "Confirm Password"
-            }}</mat-label>
-            <input
-              type="password"
-              formControlName="confirmPassword"
-              matInput
-              [type]="hide ? 'password' : 'text'"
-              required
-              placeholder="Confirm Password"
-            />
-            <button
-              mat-icon-button
-              matSuffix
-              (click)="hide = !hide"
-              [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide"
-              type="button"
-            >
-              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-            </button>
-          </mat-form-field>
-  
-          <button color="primary" type="submit" mat-raised-button class="btn">Register</button>
-        </form>
-        <p style="margin: 20px">
-          Return to Login?
-          <span (click)="toLogin()" style="color: #673ab7; cursor: pointer"
-            >Click here</span
-          >
-        </p>
+  <div>
+    <div class="form">
+      <div class="card-icon">
+        <mat-icon class="main-card-icon" matSuffix>account_circle</mat-icon>
       </div>
+      <form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="form2">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ getErrorMessage("email") || "Email" }}</mat-label>
+          <input type="email" formControlName="email" matInput required />
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ getErrorMessage("password") || "Password" }}</mat-label>
+          <input
+            type="password"
+            formControlName="password"
+            matInput
+            [type]="hideConfirmPassword ? 'password' : 'text'"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hideConfirmPassword = !hideConfirmPassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hideConfirmPassword"
+            type="button"
+          >
+            <mat-icon>{{
+              hideConfirmPassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{
+            getErrorMessage("confirmPassword") || "Confirm Password"
+          }}</mat-label>
+          <input
+            type="password"
+            formControlName="confirmPassword"
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+            type="button"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button color="primary" type="submit" mat-stroked-button class="btn">
+          Register
+        </button>
+      </form>
+      <p style="margin: 20px">
+        Return to Login?
+        <span (click)="toLogin()">Click here</span>
+      </p>
     </div>
   </div>
-  
+</div>

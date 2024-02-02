@@ -16,11 +16,16 @@
     height: 500px;
     border-radius: 10px;
 }
-
+p{
+  color: white;
+}
 button {
     width: 150px;
 }
-
+span{
+  color: #3f51b5;
+  cursor: pointer;
+}
 form {
     display: flex !important;
     flex-direction: column;
