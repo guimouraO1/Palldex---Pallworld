@@ -50,7 +50,6 @@ primary: string|null|undefined;
   login(email: string, password: string) {
     this.authService.login(email, password);
   }
-
   toRegister() {
     this.router.navigate(['register']);
   }

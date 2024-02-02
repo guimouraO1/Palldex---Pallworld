@@ -223,3 +223,8 @@ mat-paginator {
 mat-icon {
   cursor: pointer;
 }
+
+::ng-deep .mat-stroke-button{
+  border: 1px solid #1767b8 !important;
+
+}

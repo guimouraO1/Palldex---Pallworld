@@ -1,0 +1,103 @@
+
+.main {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+}
+
+button {
+    width: 150px;
+}
+
+form {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+}
+
+.main-card-icon {
+    margin: 0 !important;
+    transform: scale(5);
+    padding: 0 !important;
+    color: #3f51b5;
+}
+
+
+
+
+mat-form-field {
+    img {
+      width: 20px;
+      height: 40px;
+    }
+    width: 15vw;
+    margin: 0;
+    color: #3f51b5 !important;
+    mat-option {
+      background-color: #212529 !important;
+    }
+    mat-icon {
+      color: #3f51b5;
+    }
+    mat-label {
+      color: #3f51b5;
+    }
+    input {
+      color: #3f51b5;
+    }
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid white;
+    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0px 1000px #212529 inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+  ::ng-deep .mat-primary .mat-mdc-select-arrow {
+    box-shadow: #212529;
+    color: #3f51b5 !important;
+  }
+  
+  ::ng-deep div.mat-mdc-select-panel {
+    max-height: none !important;
+  }
+  ::ng-deep .mat-primary.mdc-menu-surface {
+    background-color: #212529 !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  ::ng-deep .mdc-text-field:not(.mdc-text-field-disabled) .mdc-text-field__input {
+    color: #3f51b5 !important;
+  }

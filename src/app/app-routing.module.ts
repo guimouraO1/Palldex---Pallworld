@@ -19,6 +19,13 @@ const routes: Routes = [
           import('./pages/login/login.component')
           .then((p) => p.LoginComponent),
       },
+      {
+        path: 'register',
+        title: 'Pallword | Register',
+        loadComponent: () =>
+          import('./pages/register/register.component')
+          .then((p) => p.RegisterComponent),
+      },
     ],
   },
   {
@@ -43,7 +50,6 @@ const routes: Routes = [
       },
     ],
   },
-
 ];
 
 @NgModule({

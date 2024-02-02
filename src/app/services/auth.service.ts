@@ -11,10 +11,7 @@ export class AuthService {
   _isAuthenticated: boolean = false;
   private urlApi = `${environment.urlApi}`;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-  ) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string) {
     this.http
@@ -26,8 +23,7 @@ export class AuthService {
           localStorage.setItem('token', res.authToken);
           this.router.navigate(['/home']);
         },
-        error: (e: any) => {
-        },
+        error: (e: any) => {},
       });
   }
 
@@ -41,13 +37,9 @@ export class AuthService {
       .pipe(take(1))
       .subscribe({
         next: (res: any) => {
-          if (res.register) {
-            this.router.navigate(['']);
-          }
+          this.router.navigate(['login']);
         },
-        error: (e: any) => {
-          
-        },
+        error: (e: any) => {},
       });
   }
 
