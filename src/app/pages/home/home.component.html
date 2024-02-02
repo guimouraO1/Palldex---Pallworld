@@ -8,75 +8,73 @@
         <!-- <mat-hint>Hint</mat-hint> -->
       </mat-form-field>
 
-      <mat-form-field color="primary" appearance="outline">
+      <mat-form-field color="primary" appearance="outline" multiple>
         <mat-label>Select an option</mat-label>
-        <mat-select [(ngModel)]="searchElement">
-          <mat-option value="">All</mat-option>
-          <mat-option value="Fire">Fire</mat-option>
-          <mat-option value="Water">Water</mat-option>
-          <mat-option value="Neutral">Neutral</mat-option>
-          <mat-option value="Dark">Dark</mat-option>
-          <mat-option value="Dragon">Dragon</mat-option>
-          <mat-option value="Eletric">Eletric</mat-option>
-          <mat-option value="Grass">Grass</mat-option>
-          <mat-option value="Ground">Ground</mat-option>
-          <mat-option value="Ice">Ice</mat-option>
+        <mat-select [(ngModel)]="searchElements" multiple>
+          @for (element of elementOptions; track element) {
+          <mat-option [value]="element">{{ element }}</mat-option>
+          }
         </mat-select>
       </mat-form-field>
+      
+
 
       <button (click)="searchBy()" mat-stroked-button color="primary">
         SEARCH
       </button>
     </div>
   </div>
-  <div class="pall-list">
-    @for (pall of currentPageData; track $index;) {
-    <div class="pall-card">
-      <div class="pall-image">
-        <img
-          src="https://raw.githubusercontent.com/mlg404/palworld-paldex-api/main/public/images/paldeck/{{
-            pall.id
-          }}.png"
-        />
-      </div>
-      <div class="pall-content">
-        <div class="pall-content-name">
-          <h2>{{ pall.name }}</h2>
+  <div class="pall-section">
+    <div class="pall-list">
+      @for (pall of currentPageData; track $index;) {
+      <div class="pall-card">
+        <div class="pall-image">
+          <img
+            src="https://raw.githubusercontent.com/mlg404/palworld-paldex-api/main/public/images/paldeck/{{
+              pall.id
+            }}.png"
+          />
         </div>
-        <div class="pall-contents">
-          <h3>
-            Elements: @for (element of pall.elements; track $index;) {
-            <span class="elements">{{ element }}</span>
-            }
-          </h3>
-          <h3>
-            Partner Skill: <span>{{ pall.partnerSkill }}</span>
-          </h3>
-          <h3>
-            Abilities: <span> {{ pall.abilities }}</span>
-          </h3>
+        <div class="pall-content">
+          <div class="pall-content-name">
+            <h2>{{ pall.name }}</h2>
+            <h2>#{{ pall.id }}</h2>
+          </div>
+          <div class="pall-contents">
+            <h3>
+              Elements: @for (element of pall.elements; track $index;) {
+              <span class="elements">{{ element }}</span>
+              }
+            </h3>
+            <h3>
+              Partner Skill: <span>{{ pall.partnerSkill }}</span>
+            </h3>
+            <h3>
+              Abilities: <span> {{ pall.abilities }}</span>
+            </h3>
+          </div>
         </div>
-      </div>
-      <div class="add-icon">
-        @if(!isPallInMyPalls(pall.id)){
-        <mat-icon
-          (click)="addToPalldex(pall.id)"
-          matTooltipPosition="left"
-          matTooltip="Add to your palldex"
-          >add</mat-icon
-        >
+        <div class="add-icon">
+          @if(!isPallInMyPalls(pall.id)){
+          <mat-icon
+            (click)="addToPalldex(pall.id)"
+            matTooltipPosition="left"
+            matTooltip="Add to your palldex"
+            >add</mat-icon
+          >
 
-        } @else {
-        <mat-icon
-          matTooltipPosition="left"
-          matTooltip="You have allready pall in your palldex"
-          >check</mat-icon
-        >}
+          } @else {
+          <mat-icon
+            matTooltipPosition="left"
+            matTooltip="You have allready pall in your palldex"
+            >check</mat-icon
+          >}
+        </div>
       </div>
+      } @empty {
+      <mat-spinner></mat-spinner>
+      }
     </div>
-    } @empty {
-    <mat-spinner></mat-spinner>
-    }
     <mat-paginator
       [color]="'primary'"
       [length]="Palls.length"

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Palls } from '../../models/pall-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -9,10 +9,11 @@ import { PallService } from '../../services/pall.service';
 import { take } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-home',
@@ -27,21 +28,29 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
+  FormElement = new FormControl('');
+  elementOptions: string[] = ["Fire", "Water", "Neutral", "Dark", "Dragon", "Electric", "Grass", "Ground", "Ice"];
+
+
   private urlApi = `${environment.urlApi}`;
   myPalls: any;
   searchTerm: string = '';
-  searchElement: string = '';
+  // searchElement: string = '';
+  searchElements: string[] = [];
+
+  elementList: string[] = [];
 
   constructor(private _pallService: PallService, private http: HttpClient) {}
 
   @ViewChild(MatPaginatorModule)
   paginator!: MatPaginator;
-
   Palls = Palls;
   totalItems: number = Palls.length;
   pageSize: number = 10; // número de itens por página
@@ -93,25 +102,33 @@ export class HomeComponent implements OnInit {
   }
 
   searchBy() {
-    if (this.searchElement.trim() !== '' || this.searchTerm.trim() !== '') {
-      if (this.searchElement.trim() !== '' && this.searchTerm.trim() !== '') {
+    if (this.searchElements.length > 0 || this.searchTerm.trim() !== '') {
+      if (this.searchElements.length > 0 && this.searchTerm.trim() !== '') {
         this.Palls = Palls.filter((pall) =>
-          pall.elements.includes(this.searchElement)
-        ).filter((pall) =>
+          this.searchElements.every(element => pall.elements.includes(element)) &&
           pall.name.toLowerCase().includes(this.searchTerm.toLowerCase())
         );
-      } else if (this.searchElement.trim() === '') {
+      } else if (this.searchElements.length > 0) {
+        this.Palls = Palls.filter((pall) =>
+          this.searchElements.every(element => pall.elements.includes(element))
+        );
+      } else if (this.searchTerm.trim() !== '') {
         this.Palls = Palls.filter((pall) =>
           pall.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-        );
-      } else if (this.searchTerm.trim() === '') {
-        this.Palls = Palls.filter((pall) =>
-          pall.elements.includes(this.searchElement)
         );
       }
+    } else {
+      this.Palls = Palls;
     }
   }
+  
 
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.searchBy();
+    }
+  }
   // if (this.searchElement.trim() !== '') {
   //   this.Palls = Palls.filter(pall => pall.elements.includes(this.searchElement));
   // } else {
