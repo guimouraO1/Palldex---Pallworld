@@ -30,7 +30,7 @@ import { of } from 'rxjs';
     MatSelectModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    AsyncPipe
+    AsyncPipe,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -78,6 +78,13 @@ export class HomeComponent implements OnInit {
   onPageChange(event: { pageIndex: number; pageSize: number }) {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
+    this.scrollToTop();
+  }
+  scrollToTop() {
+    const pallListElement = document.querySelector('.pall-list');
+    if (pallListElement) {
+      pallListElement.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   isPallInMyPalls(pallId: any): boolean {
