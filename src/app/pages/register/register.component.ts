@@ -106,6 +106,9 @@ export class RegisterComponent implements OnInit {
       } else {
         confirmPasswordControl.setErrors(null);
       }
+      if(password === '' && confirmPassword === ''){
+        confirmPasswordControl.setErrors({ passwordNone: true });
+      }
     }
 
     return null;
@@ -131,6 +134,13 @@ export class RegisterComponent implements OnInit {
       control.hasError('passwordMismatch')
     ) {
       return "Passwords don't match";
+    }
+
+    if (
+      controlName === 'confirmPassword' &&
+      control.hasError('passwordNone')
+    ) {
+      return "Field is required";
     }
 
     return '';
