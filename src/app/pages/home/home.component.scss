@@ -1,42 +1,20 @@
 .main {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding: 20px;
   height: 100%;
 }
 
-::ng-deep .mat-primary .mat-mdc-select-arrow {
-  box-shadow: #212529;
-  color: #3f51b5 !important;
-}
-
-::ng-deep .mdc-list-item__primary-text {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-}
-
-::ng-deep div.mat-mdc-select-panel {
-  max-height: none !important;
-}
-::ng-deep .mat-primary.mdc-menu-surface {
-  background-color: #212529 !important;
-}
-
-::ng-deep .mdc-text-field:not(.mdc-text-field-disabled) .mdc-text-field__input {
-  color: #1767b8 !important;
-}
 
 .search {
-  margin-top: 10px;
+  margin-top: 30px;
   width: 20vw;
   height: 80vh;
   box-shadow: 0px 0px 22px 7px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   border-radius: 4px;
 
@@ -76,13 +54,38 @@
   }
 }
 
+
+::ng-deep .mat-primary .mat-mdc-select-arrow {
+  box-shadow: #212529;
+  color: #3f51b5 !important;
+}
+
+::ng-deep .mdc-list-item__primary-text {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+::ng-deep div.mat-mdc-select-panel {
+  max-height: none !important;
+}
+::ng-deep .mat-primary.mdc-menu-surface {
+  background-color: #212529 !important;
+}
+
+::ng-deep .mdc-text-field:not(.mdc-text-field-disabled) .mdc-text-field__input {
+  color: #1767b8 !important;
+}
+
 .pall-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
-  gap: 10px;
   height: 80vh;
+  gap: 10px;
   width: 80vw;
 }
 .pall-list {
@@ -159,7 +162,7 @@
       color: #3f51b5;
       margin: 0;
       font-size: x-large;
-      box-shadow: inset 0px 0px 50px 23px rgba(0,0,0,0.1);
+      box-shadow: inset 0px 0px 50px 23px rgba(0, 0, 0, 0.055);
       cursor: pointer;
     }
     h3 {
@@ -170,7 +173,7 @@
       gap: 10px;
       color: #3f51b5;
       margin: 0;
-      box-shadow: inset 0px 0px 50px 23px rgba(0,0,0,0.1);
+      box-shadow: inset 0px 0px 50px 23px rgba(0, 0, 0, 0.041);
       border-radius: 4px;
       overflow: hidden;
     }

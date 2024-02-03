@@ -31,10 +31,11 @@
         Search
       </button>
     </div>
+    
   </div>
   <div class="pall-section">
     <div class="pall-list">
-      @for (pall of currentPageData; track $index;) {
+      @for (pall of currentPageData | async; track $index;) {
       <div class="pall-card">
         <div class="pall-image">
           <img

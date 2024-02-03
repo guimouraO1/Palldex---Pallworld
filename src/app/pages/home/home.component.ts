@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Palls } from '../../models/pall-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSelectModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    AsyncPipe
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -69,7 +71,7 @@ export class HomeComponent implements OnInit {
   // Método para obter a página atual
   get currentPageData() {
     const startIndex = this.currentPage * this.pageSize;
-    return this.Palls.slice(startIndex, startIndex + this.pageSize);
+    return of(this.Palls.slice(startIndex, startIndex + this.pageSize));
   }
 
   // Método chamado quando a página é alterada

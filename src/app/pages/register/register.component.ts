@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
     let result = await this.authService.asycUserAuthentication();
 
     if (result) {
-      this.router.navigate(['/publications']);
+      this.router.navigate(['/home']);
     }
   }
 
