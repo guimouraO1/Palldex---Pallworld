@@ -15,7 +15,8 @@
           <mat-option [value]="element"
             >{{ element }}
             <img
-              with="30" height="30" 
+              with="30"
+              height="30"
               class="img-element"
               src="https://raw.githubusercontent.com/mlg404/palworld-paldex-api/main/public/images/elements/{{
                 element.toLowerCase()
@@ -31,7 +32,6 @@
         Search
       </button>
     </div>
-    
   </div>
   <div class="pall-section">
     <div class="pall-list">
@@ -52,13 +52,16 @@
           <div class="pall-contents">
             <h3>
               Elements: @for (element of pall.elements; track $index;) {
-              <span class="elements">{{ element }}<img
-                with="20" height="20" 
-                class="img-element"
-                src="https://raw.githubusercontent.com/mlg404/palworld-paldex-api/main/public/images/elements/{{
-                  element.toLowerCase()
-                }}.png"
-                alt=""
+              <span class="elements"
+                >{{ element
+                }}<img
+                  with="20"
+                  height="20"
+                  class="img-element"
+                  src="https://raw.githubusercontent.com/mlg404/palworld-paldex-api/main/public/images/elements/{{
+                    element.toLowerCase()
+                  }}.png"
+                  alt=""
               /></span>
               }
             </h3>
@@ -71,7 +74,6 @@
           </div>
         </div>
         <div class="add-icon">
-          
           @if(!isPallInMyPalls(pall.id)){
           <mat-icon
             (click)="addToPalldex(pall.id)"
@@ -80,8 +82,7 @@
           >
 
           } @else {
-          <mat-icon
-            matTooltip="You have allready this pall in your palldex"
+          <mat-icon matTooltip="You have allready this pall in your palldex"
             >check</mat-icon
           >}
         </div>
