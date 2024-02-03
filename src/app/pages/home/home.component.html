@@ -94,6 +94,7 @@
     <mat-paginator
       [color]="'primary'"
       [length]="Palls.length"
+      [pageSizeOptions]="[5, 10, 25, 100]"
       [pageSize]="pageSize"
       (page)="onPageChange($event)"
     ></mat-paginator>

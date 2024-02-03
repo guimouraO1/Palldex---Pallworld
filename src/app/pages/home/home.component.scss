@@ -210,14 +210,14 @@ mat-paginator {
   align-items: center;
   border-radius: 10px;
   margin-top: 20px;
-  color: #ffffff;
+  color: #3f51b5;
   border: 1px solid rgba(112, 112, 112, 0.308);
   background-color: transparent;
 }
 
 ::ng-deep .mat-mdc-icon-button:enabled .mat-mdc-paginator-icon {
   color: #e3e3e9 !important;
-  fill: white !important;
+  fill: #3f51b5!important;
 }
 
 mat-icon {
@@ -225,6 +225,14 @@ mat-icon {
 }
 
 ::ng-deep .mat-stroke-button{
-  border: 1px solid #1767b8 !important;
+  border: 1px solid #3f51b5 !important;
 
+}
+
+
+::ng-deep mat-option {
+  color: white !important;
+}
+::ng-deep .mat-mdc-select{
+  color: #3f51b5 !important;
 }

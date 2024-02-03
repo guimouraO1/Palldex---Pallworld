@@ -53,17 +53,17 @@ export class HomeComponent implements OnInit {
   elementList: string[] = [];
 
   constructor(private _pallService: PallService, private http: HttpClient) {}
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
-  @ViewChild(MatPaginatorModule)
-  paginator!: MatPaginator;
   Palls = Palls;
   totalItems: number = Palls.length;
-  pageSize: number = 10; // número de itens por página
+  pageSize: number = 10;
   currentPage: number = 0;
 
   ngOnInit() {
     this.getPalls();
     this.paginator.pageSize = this.pageSize;
+    this.paginator._intl.itemsPerPageLabel="Palls per Page";
   }
 
   // Método para obter a página atual
@@ -73,8 +73,9 @@ export class HomeComponent implements OnInit {
   }
 
   // Método chamado quando a página é alterada
-  onPageChange(event: { pageIndex: number }) {
+  onPageChange(event: { pageIndex: number; pageSize: number }) {
     this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
   }
 
   isPallInMyPalls(pallId: any): boolean {
@@ -107,6 +108,13 @@ export class HomeComponent implements OnInit {
   }
 
   searchBy() {
+    // Resetar a página para a primeira
+    this.currentPage = 0;
+
+    // Resetar o pageIndex do paginator para a primeira página
+    if (this.paginator) {
+      this.paginator.firstPage();
+    }
     if (this.searchElements.length > 0 || this.searchTerm.trim() !== '') {
       if (this.searchElements.length > 0 && this.searchTerm.trim() !== '') {
         this.Palls = Palls.filter(
