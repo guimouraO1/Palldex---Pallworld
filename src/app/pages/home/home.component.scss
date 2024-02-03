@@ -105,6 +105,7 @@
 }
 
 .pall-card {
+  box-shadow: 0px 0px 22px 7px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   border: 1px solid rgba(112, 112, 112, 0.308);
@@ -154,7 +155,7 @@
       color: #3f51b5;
       margin: 0;
       font-size: x-large;
-      border: 1px solid rgba(112, 112, 112, 0.308);
+      box-shadow: inset 0px 0px 50px 23px rgba(0,0,0,0.1);
       cursor: pointer;
     }
     h3 {
@@ -165,7 +166,7 @@
       gap: 10px;
       color: #3f51b5;
       margin: 0;
-      border: 1px solid rgba(112, 112, 112, 0.308);
+      box-shadow: inset 0px 0px 50px 23px rgba(0,0,0,0.1);
       border-radius: 4px;
       overflow: hidden;
     }
