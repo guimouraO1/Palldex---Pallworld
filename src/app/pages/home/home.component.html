@@ -35,7 +35,7 @@
   </div>
   <div class="pall-section">
     <div class="pall-list">
-      @for (pall of currentPageData | async; track $index;) {
+      @for (pall of currentPageData | async; track pall.id;) {
       <div class="pall-card">
         <div class="pall-image">
           <img
@@ -54,7 +54,8 @@
               Elements: @for (element of pall.elements; track $index;) {
               <span class="elements"
                 >{{ element
-                }}<img
+                }}
+                <img
                   with="20"
                   height="20"
                   class="img-element"
@@ -88,7 +89,7 @@
         </div>
       </div>
       } @empty {
-      <mat-spinner></mat-spinner>
+        <mat-spinner></mat-spinner>
       }
     </div>
     <mat-paginator

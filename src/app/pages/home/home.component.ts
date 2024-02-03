@@ -63,6 +63,7 @@ export class HomeComponent implements OnInit {
   currentPage: number = 0;
 
   ngOnInit() {
+    this.Palls = Palls;
     this.getPalls();
     this.paginator.pageSize = this.pageSize;
     this.paginator._intl.itemsPerPageLabel = 'Palls per Page';
@@ -91,7 +92,7 @@ export class HomeComponent implements OnInit {
     return this.myPalls.some((myPall: { id: any }) => myPall.id === pallId);
   }
 
-  getPalls() {
+  async getPalls() {
     this._pallService.getPalls().subscribe({
       next: (_palls: any) => {
         this.myPalls = _palls;

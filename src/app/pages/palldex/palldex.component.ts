@@ -3,11 +3,12 @@ import { PallService } from '../../services/pall.service';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-palldex',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, MatProgressSpinnerModule],
   templateUrl: './palldex.component.html',
   styleUrl: './palldex.component.scss'
 })
