@@ -75,15 +75,13 @@
           @if(!isPallInMyPalls(pall.id)){
           <mat-icon
             (click)="addToPalldex(pall.id)"
-            matTooltipPosition="left"
             matTooltip="Add to your palldex"
             >add</mat-icon
           >
 
           } @else {
           <mat-icon
-            matTooltipPosition="left"
-            matTooltip="You have allready pall in your palldex"
+            matTooltip="You have allready this pall in your palldex"
             >check</mat-icon
           >}
         </div>

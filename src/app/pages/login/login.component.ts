@@ -24,13 +24,15 @@ import { MatButtonModule } from '@angular/material/button';
 export class LoginComponent implements OnInit {
   user = { email: '', password: '' };
   hide = true;
-primary: string|null|undefined;
+  primary: string | null | undefined;
 
   async ngOnInit() {
     let result = await this.authService.asycUserAuthentication();
 
     if (result) {
       this.router.navigate(['/home']);
+    } else {
+      this.router.navigate(['login']);
     }
   }
 
