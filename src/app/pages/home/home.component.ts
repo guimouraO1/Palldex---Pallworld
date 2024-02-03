@@ -6,7 +6,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { PallService } from '../../services/pall.service';
-import { take } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -36,15 +35,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class HomeComponent implements OnInit {
   FormElement = new FormControl('');
-  elementOptions: string[] = ["Fire", "Water", "Neutral", "Dark", "Dragon", "Electric", "Grass", "Ground", "Ice"];
-
-
+  elementOptions: string[] = [
+    'Fire',
+    'Water',
+    'Neutral',
+    'Dark',
+    'Dragon',
+    'Electric',
+    'Grass',
+    'Ground',
+    'Ice',
+  ];
   private urlApi = `${environment.urlApi}`;
   myPalls: any;
   searchTerm: string = '';
-  // searchElement: string = '';
   searchElements: string[] = [];
-
   elementList: string[] = [];
 
   constructor(private _pallService: PallService, private http: HttpClient) {}
@@ -104,13 +109,17 @@ export class HomeComponent implements OnInit {
   searchBy() {
     if (this.searchElements.length > 0 || this.searchTerm.trim() !== '') {
       if (this.searchElements.length > 0 && this.searchTerm.trim() !== '') {
-        this.Palls = Palls.filter((pall) =>
-          this.searchElements.every(element => pall.elements.includes(element)) &&
-          pall.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        this.Palls = Palls.filter(
+          (pall) =>
+            this.searchElements.every((element) =>
+              pall.elements.includes(element)
+            ) && pall.name.toLowerCase().includes(this.searchTerm.toLowerCase())
         );
       } else if (this.searchElements.length > 0) {
         this.Palls = Palls.filter((pall) =>
-          this.searchElements.every(element => pall.elements.includes(element))
+          this.searchElements.every((element) =>
+            pall.elements.includes(element)
+          )
         );
       } else if (this.searchTerm.trim() !== '') {
         this.Palls = Palls.filter((pall) =>
@@ -121,7 +130,6 @@ export class HomeComponent implements OnInit {
       this.Palls = Palls;
     }
   }
-  
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
