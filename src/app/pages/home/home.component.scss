@@ -34,7 +34,7 @@
   margin-top: 10px;
   width: 20vw;
   height: 80vh;
-  border: 1px solid rgba(112, 112, 112, 0.308);
+  box-shadow: 0px 0px 22px 7px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,22 +50,26 @@
       width: 15vw;
       margin: 0;
       color: #3f51b5;
-
+      
       mat-option {
         background-color: #212529 !important;
+        
       }
       mat-icon {
         cursor: pointer;
         color: #3f51b5;
+        
       }
       mat-label {
         color: #3f51b5;
       }
       mat-select {
+        
         color: #3f51b5;
         background-color: #212529 !important;
       }
       input {
+        
         color: #3f51b5;
       }
     }
@@ -108,7 +112,7 @@
   box-shadow: 0px 0px 22px 7px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
-  border: 1px solid rgba(112, 112, 112, 0.308);
+  border: 1px solid rgba(112, 112, 112, 0.062);
   width: 70vw;
   height: 30vh;
   border-radius: 4px;
@@ -118,7 +122,7 @@
     object-fit: cover;
     width: 15vw;
     height: 100%;
-    border-right: 1px solid rgba(112, 112, 112, 0.308);
+    border-right: 1px solid rgba(112, 112, 112, 0.062);
 
     img {
       width: 100%; /* Ajuste para ocupar 100% da largura do contêiner */
@@ -212,7 +216,7 @@ mat-paginator {
   border-radius: 10px;
   margin-top: 20px;
   color: #3f51b5;
-  border: 1px solid rgba(112, 112, 112, 0.308);
+  box-shadow: 0px 0px 22px 7px rgba(0,0,0,0.1);
   background-color: transparent;
 }
 

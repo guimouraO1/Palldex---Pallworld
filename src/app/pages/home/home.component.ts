@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getPalls();
     this.paginator.pageSize = this.pageSize;
-    this.paginator._intl.itemsPerPageLabel="Palls per Page";
+    this.paginator._intl.itemsPerPageLabel = 'Palls per Page';
   }
 
   // Método para obter a página atual
@@ -110,8 +110,6 @@ export class HomeComponent implements OnInit {
   searchBy() {
     // Resetar a página para a primeira
     this.currentPage = 0;
-
-    // Resetar o pageIndex do paginator para a primeira página
     if (this.paginator) {
       this.paginator.firstPage();
     }
